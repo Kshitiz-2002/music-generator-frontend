@@ -31,15 +31,15 @@ export const auth = betterAuth({
         checkout({
           products: [
             {
-              productId: "ff720f35-e783-4fd5-90e1-541f74a01b7b",
+              productId: "3ca4553c-f182-49f6-a298-18a2a4024069",
               slug: "small",
             },
             {
-              productId: "952b12d7-2774-4b44-82db-eeb211a6be73",
+              productId: "f17b2da7-5cef-4591-afac-49eabc2075c9",
               slug: "medium",
             },
             {
-              productId: "991ff213-f5dc-4e2b-afec-6d10f5411231",
+              productId: "e82eacfe-f5b0-4c97-a86f-71a54b8f4f71",
               slug: "large",
             },
           ],
@@ -48,7 +48,8 @@ export const auth = betterAuth({
         }),
         portal(),
         webhooks({
-          secret: env.POLAR_WEBHOOK_SECRET,
+          secret: env.POLAR_WEBHOOK_SECRET, 
+          
           onOrderPaid: async (order) => {
             const externalCustomerId = order.data.customer.externalId;
 
@@ -62,13 +63,13 @@ export const auth = betterAuth({
             let creditsToAdd = 0;
 
             switch (productId) {
-              case "ff720f35-e783-4fd5-90e1-541f74a01b7b":
+              case "3ca4553c-f182-49f6-a298-18a2a4024069":
                 creditsToAdd = 10;
                 break;
-              case "952b12d7-2774-4b44-82db-eeb211a6be73":
+              case "f17b2da7-5cef-4591-afac-49eabc2075c9":
                 creditsToAdd = 25;
                 break;
-              case "991ff213-f5dc-4e2b-afec-6d10f5411231":
+              case "e82eacfe-f5b0-4c97-a86f-71a54b8f4f71":
                 creditsToAdd = 50;
                 break;
             }
